@@ -1,7 +1,5 @@
 /*
-	Strongly Typed by HTML5 UP
-	html5up.net | @ajlkn
-	Free for personal and commercial use under the CCA 3.0 license (html5up.net/license)
+dropdown menu functionality
 */
 $(function () {
   $('#nav > ul').dropotron({
@@ -11,6 +9,60 @@ $(function () {
     alignment: 'center'
   });
 });
+window.addEventListener('load', () => {
+  document.body.classList.add('loaded');
+  document.body.classList.remove('is-preload');
+});
+
+
+/*Show more button functionality*/
+document.addEventListener('DOMContentLoaded', function () {
+  const showMoreButton = document.getElementById('show-more');
+
+  showMoreButton.addEventListener('click', function (event) {
+    event.preventDefault();
+
+    const hiddenArticles = document.querySelectorAll('.article.hidden');
+    const batch = Array.from(hiddenArticles).slice(0, 3); // show 3 at a time
+
+    batch.forEach((article) => {
+      requestAnimationFrame(() => {
+        article.classList.remove('hidden');
+      });
+    });
+
+    if (hiddenArticles.length <= 3) {
+      showMoreButton.style.display = 'none';
+    }
+  });
+});
+
+$(
+  '<div id="titleBar">' +
+    '<a href="#navPanel" class="toggle"></a>' +
+  '</div>'
+).appendTo($body);
+
+$(
+  '<div id="navPanel">' +
+    '<nav>' + $('#nav').navList() + '</nav>' +
+  '</div>'
+).appendTo($body)
+.panel({
+  delay: 500,
+  hideOnClick: true,
+  hideOnSwipe: true,
+  resetScroll: true,
+  resetForms: true,
+  side: 'left',
+  target: $body,
+  visibleClass: 'navPanel-visible'
+});
+
+
+
+
+
 
 
 (function($) {

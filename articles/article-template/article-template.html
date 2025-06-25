@@ -1,0 +1,232 @@
+<!DOCTYPE HTML>
+<html lang="en">
+<script src="https://polyfill.io/v3/polyfill.min.js?features=es6"></script>
+<script id="MathJax-script" async src="https://cdn.jsdelivr.net/npm/mathjax@3/es5/tex-mml-chtml.js">
+</script>
+
+<head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Merton Model</title> <!--Put what you want the tab to be called here-->
+    <link rel="icon" type="image/x-icon" href="/images/dogbannerlogo3.jpg">
+    <link rel="stylesheet" href="/assets/css/main.css" />
+</head>
+
+<script src="/assets/js/jquery.min.js"></script>
+<script src="/assets/js/jquery.dropotron.min.js"></script>
+<script src="/assets/js/browser.min.js"></script>
+<script src="/assets/js/breakpoints.min.js"></script>
+<script src="/assets/js/util.js"></script>
+<script src="/assets/js/main.js"></script>
+<script src="/assets/js/loadHeader.js"></script>
+<div id="header"></div>
+
+<body class="homepage is-preload">
+    <div id="page-wrapper">
+        <div class="article-container">
+
+            <!-- Don't touch the setup aside from tab name and start here -->
+
+            <!-- This is the title -->
+            <p id="title" align="center">
+                <strong>This is an Article Template</strong>
+            </p>
+
+            <!-- This is the authors -->
+            <p id="authors" align="center">
+                Eugene Yuqing Wang <sup>1</sup> and Huaxiong Huang <sup>1,2</sup>
+            </p>
+
+            <!-- Each p element represents a seperate paragraph -->
+            <p>
+                1. CynoRisk Analytics Inc. Mathematics Analytics and Data Science
+                Lab, The Fields Institute for Research in Mathematics Sciences, 222 College
+                Street, Toronto, ON, M5T 3J1, Canada
+            </p>
+            <p>
+                2. Department of Mathematics and Statistics, York University, 4700
+                Keele Street, Toronto, ON M3J 1P3, Canada
+            </p>
+
+            <!-- h1 are titles for each section of the article -->
+            <h1>
+                <strong>Summary</strong>
+            </h1>
+
+            <!-- You can insert latex into the code by using \(latex here\) -->
+            <p>
+                \(dA = \mu A dt + \sigma A dW(t) \quad [3] \)
+            </p>
+
+            <!-- How to insert an image:
+            1. change the text that says "Figure 1. The Merton Model" for the title of the image
+            2. in the <img> element you can adjust the width and height as you please, then give the path to the image (put the
+            image in the same directory as the html file) -->
+            <table border="1" cellspacing="0" cellpadding="0">
+                <tbody>
+                    <tr>
+                        <td width="407" valign="top">
+                            <p>
+                                Figure 1. The Merton Model
+                            </p>
+                            <p>
+                                <img align="center" width="407" height="300" src='figure1.jpg'>
+                            </p>
+                        </td>
+                    </tr>
+                </tbody>
+            </table>
+
+            <!-- Styling for the table, can be ignored unless you want to adjust something -->
+            <style>
+                table.custom-table {
+                    width: 100%;
+                    border-collapse: collapse;
+                    font-family: Arial, sans-serif;
+                }
+
+                table.custom-table caption {
+                    caption-side: top;
+                    font-weight: bold;
+                    font-size: 1.1em;
+                    margin-bottom: 8px;
+                }
+
+                table.custom-table th,
+                table.custom-table td {
+                    border: 1px solid #ccc;
+                    padding: 10px;
+                    text-align: left;
+                    vertical-align: top;
+                    color: #222;
+                    /* Dark text */
+                    background-color: #fff;
+                    /* White background */
+                }
+
+                table.custom-table th {
+                    background-color: #f2f2f2;
+                    font-weight: bold;
+                }
+            </style>
+
+            <!-- Table syntax. Each <tr> is a new row, each <th> is an element in that row -->
+            <table class="custom-table">
+                <caption>Table 1. Linear Regression Results for Three Sample Portfolios
+                </caption>
+                <thead>
+                    <tr>
+                        <th>Portfolio</th>
+                        <th>Credit Spread</th>
+                        <th>Gov Interest Rate</th>
+                        <th>Interest Rate Corp</th>
+                        <th>Unemployment Rate</th>
+                        <th>GDP</th>
+                        <th>Equity Return</th>
+                        <th>Equity Vol</th>
+                    </tr>
+                </thead>
+                <tbody>
+                    <tr>
+                        <td>Small Commercial</td>
+                        <td>CorpBBB10Y, 30%, 2Q lag</td>
+                        <td>Gov10Y, 20%, 3Q lag</td>
+                        <td></td>
+                        <td>50%, 3Q lag</td>
+                        <td></td>
+                        <td></td>
+                        <td></td>
+                    </tr>
+                    <tr>
+                        <td>Large Commercial</td>
+                        <td>CorpBBB10Y, 50%, 3Q lag</td>
+                        <td>Gov10Y, 20%, no lag</td>
+                        <td></td>
+                        <td>30%, 3Q lag</td>
+                        <td></td>
+                        <td></td>
+                        <td></td>
+                    </tr>
+                    <tr>
+                        <td>Corporate</td>
+                        <td></td>
+                        <td></td>
+                        <td>CorpBBB10Y, 40%, no lag</td>
+                        <td>30%, 3Q lag</td>
+                        <td></td>
+                        <td></td>
+                        <td>Equity Vol, 30%, 3Q lag</td>
+                    </tr>
+                </tbody>
+            </table>
+
+            <!-- References, left in template for more examples of text as well as showing how to link things -->
+            <h1>
+                <strong>References</strong>
+            </h1>
+            <p>
+                [1] Merton, R.C. “On the Pricing of Corporate Debt: The Risk Structure of
+                Interest Rates,” Journal of Finance, 29: 449-70 (1974)
+            </p>
+            <p>
+                [2] Crosbie, P., Bohn, J., “Modeling Default Risk. Modeling Methodology.”
+                Moody’s KMV (2003)
+            </p>
+            <p>
+                [3] Gupton, G.M., J.P. Morgan &amp; Co, C. C. Finger, and M. Bhatia,
+                “CreditMetrics - Technical Document: The Benchmark for Understanding Credit
+                Risk,” 1997
+            </p>
+            <p>
+                [4] Tazhi Y., E. Wang, Z. Hu, and M. A. Clayton, “Transition Probability
+                Matrix Methodology for Incremental Risk Charge,”, Journal of Financial
+                Engineering, Vol. 01, No. 01, 1450010 (2014)
+            </p>
+            <p>
+                [5] Albanese C. and O. Chen, “Implied migration rates from credit barrier
+                models,” Journal of Banking &amp; Finance, vol 30, 607-626 (2006)
+            </p>
+            <p>
+                [6] Hull, J., I. Nelken, and A. White, “Merton’s model, Credit Risk, and
+                Volatility Skews”, Journal of Credit Risk, Vol 1, No. 1, 3-27 (2005)
+            </p>
+            <p>
+                [7] Moody’s Investors Service, “Default Trends -Global, December 2021
+                Default Report,” January 2022
+            </p>
+            <p>
+                [8] International Accounting Standards Board (IASB), “IFRS 9 Financial
+                instruments. International Accounting Standards Board.” (2014),
+                <a href="https://www.ifrs.org/issued-standards/list-of-standards/ifrs-9-financial-instruments/">
+                    https://www.ifrs.org/issued-standards/list-of-standards/ifrs-9-financial-instruments/
+                </a>
+            </p>
+            <p>
+                [9] Yang, B. H, “Point-in-time” Probability of Default Term Structure
+                Models for Multiperiod Scenario Loss Projection,” Journal of Risk Model
+                Validation, Vol 11, No. 1, 73-94 (2017)
+            </p>
+            <p>
+                [10] Vasicek, O. “Loan Portfolio Value,” Risk (December 2002), 160-62
+            </p>
+            <p>
+                [11] Huang, H., E. Wang, H. Huang, and Y. Wang, “An Analytical VaR Approach
+                for Credit Portfolio with Liquidity Horizon and Portfolio Rebalancing,”
+                Journal of Credit Risk 11(4), 1-28 (2015)
+            </p>
+            <p>
+                [12] Hosseini H., C Johnston, C. Logan, M. Molico, S. Shen, and M.
+                Tremblay, “Assessing Climate-Related Financial Risk: Guide to
+                Implementation of Methods., Bank of Canada Technical Report (2022)
+            </p>
+            <p>
+                [13] Basel Committee on Banking Supervision, “Minimum capital requirements
+                for market risk,” January (2019),
+                <a href="https://www.bis.org/bcbs/publ/d457.htm">
+                    https://www.bis.org/bcbs/publ/d457.htm
+                </a>
+            </p>
+        </div>
+        <!-- Footer -->
+		<div id="contact-us" class="contact-placeholder"></div>
+</html>
