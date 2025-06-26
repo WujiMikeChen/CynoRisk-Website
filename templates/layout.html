@@ -1,0 +1,36 @@
+<!DOCTYPE html>
+<html>
+<script src="https://polyfill.io/v3/polyfill.min.js?features=es6"></script>
+<script id="MathJax-script" async src="https://cdn.jsdelivr.net/npm/mathjax@3/es5/tex-mml-chtml.js"></script>
+
+<head>
+    <title>{% block title %}CynoRisk{% endblock %}</title>
+    <meta charset="utf-8">
+    <link rel="icon" type="image/x-icon" href="{{ url_for('static', filename='images/placeholderlogo.jpg') }}">
+    <meta name="viewport" content="width=device-width, initial-scale=1, user-scalable=no">
+    <link rel="stylesheet" href="{{ url_for('static', filename='css/main.css') }}">
+    <link rel="stylesheet" href="{{ url_for('static', filename='css/fontawesome-all.min.css') }}">
+</head>
+
+<body class="homepage is-preload">
+    <div id="page-wrapper">
+
+        {% include "header.html" %}
+
+        <section>
+            {% block content %}{% endblock %}
+        </section>
+
+        {% include "contact-us.html" %}
+
+    </div>
+
+    <!-- Scripts -->
+    <script src="{{ url_for('static', filename='js/jquery.min.js') }}"></script>
+    <script src="{{ url_for('static', filename='js/browser.min.js') }}"></script>
+    <script src="{{ url_for('static', filename='js/breakpoints.min.js') }}"></script>
+    <script src="{{ url_for('static', filename='js/util.js') }}"></script>
+    <script src="{{ url_for('static', filename='js/main.js') }}"></script>
+</body>
+
+</html>
