@@ -16,6 +16,25 @@ def contact_us_page():
 def about_us_page():
     return render_template("about-us.html")
 
+@app.route("/risk-management")
+def risk_management_page():
+    return render_template("risk-management.html")
+
+@app.route("/regulation")
+def regulation_page():
+    return render_template("regulation.html")
+
+@app.route("/pricing")
+def pricing_page():
+    return render_template("pricing.html")
+
+@app.route("/portfolio-management")
+def portfolio_management_page():
+    return render_template("portfolio-management.html")
+
+@app.route("/journal")
+def journal_page():
+    return render_template("journal.html")
 
 @app.route("/header.html")
 def header_partial():

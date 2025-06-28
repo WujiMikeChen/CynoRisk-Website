@@ -1,4 +1,5 @@
 <meta name="viewport" content="width=device-width, initial-scale=1, user-scalable=no" />
+
 <body class="homepage is-preload">
 	<div id="page-wrapper">
 
@@ -7,18 +8,32 @@
 			<div class="container">
 
 				<!-- Logo -->
-				<h1 id="logo">
+				<!-- <h1 id="logo">
 					<img src="{{ url_for('static', filename='images/placeholderlogo.jpg') }}" class="logo-icon" alt="Dog Logo">
-					CynoRisk Analytics Inc
-				</h1>
-				<hr class="logo-divider">
+					CynoRisk.net
+				</h1> -->
+				<div id="branding">
+					<div class="branding-left">
+						<img src="{{ url_for('static', filename='images/placeholderlogo.jpg') }}" alt="Logo"
+							class="site-logo" />
+					</div>
+					<div class="branding-center">
+						<h1 class="site-title">CynoRisk.net</h1>
+					</div>
+					<div class="branding-right"></div> <!-- empty, balances the layout -->
+				</div>
 
+				<hr class="logo-divider">
 				<!-- Nav -->
 				<nav id="nav">
 					<ul>
-						<li><a class="icon solid fa-home" href="/"><span>Home</span></a></li>
-						<li><a class="icon solid fa-users" href="/about-us"><span>About Us</span></a></li>
-						<li><a class="icon solid fa-handshake" href="/"><span>How we help</span></a></li>
+						<li><a href="/"><span>Home</span></a></li>
+						<li><a href="/risk-management"><span>Risk Management</span></a></li>
+						<li><a href="/regulation"><span>Regulation</span></a></li>
+						<li><a href="/pricing"><span>Pricing</span></a></li>
+						<li><a href="/portfolio-management"><span>Portfolio Management</span></a></li>
+						<li><a href="/journal"><span>Journals</span></a></li>
+						<!-- <li><a class="icon solid fa-handshake" href="/"><span>How we help</span></a></li>
 						<li>
 							<a href="#" class="icon fa-chart-bar"><span>Products</span></a>
 							<ul>
@@ -35,8 +50,9 @@
 								</li>
 								<li><a href="#">Veroeros feugiat</a></li>
 							</ul>
-						</li>
-						<li><a class="icon solid fa-envelope" href="#footer"><span>Contact Us</span></a></li>
+						</li> -->
+						<li><a href="/about-us"><span>About</span></a></li>
+						<li><a href="#footer"><span>Contact</span></a></li>
 					</ul>
 				</nav>
 
