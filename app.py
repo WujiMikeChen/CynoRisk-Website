@@ -1,8 +1,25 @@
 from flask import Flask, request, render_template, redirect, flash
 import os
+from flask_mail import Mail, Message
+from helper import is_valid_email_format,has_mx_record
+from flask import session
+from werkzeug.security import generate_password_hash, check_password_hash
+from dotenv import load_dotenv
+
+load_dotenv()
+users = {}
 
 app = Flask(__name__)
-app.secret_key = 'your_secret_key'  # Required for flashing messages
+app.secret_key = os.getenv("SECRET_KEY")
+app.config['MAIL_SERVER'] = os.getenv("MAIL_SERVER")
+app.config['MAIL_PORT'] = int(os.getenv("MAIL_PORT", 587))
+app.config['MAIL_USE_TLS'] = os.getenv("MAIL_USE_TLS", "True") == "True"
+app.config['MAIL_USERNAME'] = os.getenv("MAIL_USERNAME")
+app.config['MAIL_PASSWORD'] = os.getenv("MAIL_PASSWORD")
+app.config['MAIL_DEFAULT_SENDER'] = os.getenv("MAIL_DEFAULT_SENDER")
+
+
+mail = Mail(app)
 
 @app.route("/")
 def home():
@@ -54,21 +71,85 @@ def render_article(article_name):
     else:
         return "Article not found", 404
     
-@app.route("/contact", methods=["GET", "POST"])
+@app.route("/contact", methods=["POST"])
 def contact():
-    if request.method == "POST":
-        name = request.form.get("name")
-        email = request.form.get("email")
-        message = request.form.get("message")
-        
-        print(f"Received message from {name} ({email}): {message}")
-        flash("Message sent successfully!")
-        return redirect("/contact-us")
+    name = request.form.get("name")
+    email = request.form.get("email")
+    message = request.form.get("message")
 
-    return render_template("contact-us.html")
+    print(f"Received message from {name} ({email}): {message}")
+
+    if not name or not email or not message:
+        flash("All fields are required.")
+        return redirect("/")
+    
+    if not is_valid_email_format(email):
+        flash("Please enter a valid email address.")
+        return redirect("/")
+
+    if not has_mx_record(email):
+        flash("That email domain can't receive mail.")
+        return redirect("/")
+    
+    try:
+        msg = Message(
+            subject="New Contact Form Submission",
+            sender=email,
+            recipients=["wujimikechen@gmail.com"],
+            body=f"Name: {name}\nEmail: {email}\n\nMessage:\n{message}"
+        )
+        mail.send(msg)
+        flash("Message sent successfully!")
+    except Exception as e:
+        print("Email send failed:", e)
+        flash("An error occurred while sending your message. Please try again.")
+
+    return redirect("/")
+
+@app.route("/register", methods=["GET", "POST"])
+def register():
+    flash("Test flash")
+    if request.method == "POST":
+        username = request.form["username"]
+        email = request.form["email"]
+        password = request.form["password"]
+
+        if username in users:
+            flash("Username already exists.")
+            return redirect("/register")
+
+        users[username] = {
+            "email": email,
+            "password": generate_password_hash(password)
+        }
+        flash("Registration successful. You can now log in.")
+        return redirect("/login")
+
+    return render_template("register.html")
+
+@app.route("/login", methods=["GET", "POST"])
+def login():
+    if request.method == "POST":
+        username = request.form["username"]
+        password = request.form["password"]
+
+        user = users.get(username)
+        if user and check_password_hash(user["password"], password):
+            session["user"] = username
+            flash("Logged in successfully.")
+            return redirect("/")
+        else:
+            flash("Invalid username or password.")
+            return redirect("/login")
+
+    return render_template("login.html")
+
+@app.route("/logout")
+def logout():
+    session.pop("user", None)
+    flash("Logged out successfully.")
+    return redirect("/")
 
 # remove this later
 if __name__ == "__main__":
     app.run(debug=True)
-
-app.run()

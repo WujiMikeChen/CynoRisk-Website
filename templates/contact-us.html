@@ -1,4 +1,7 @@
-<meta name="viewport" content="width=device-width, initial-scale=1, user-scalable=no" />
+{% extends "base.html" %}
+{% block title %}Contact Us - CynoRisk Analytics{% endblock %}
+
+{% block content %}
 
 <body class="homepage is-preload">
 	<div id="page-wrapper">
@@ -7,16 +10,6 @@
 		<!-- Footer -->
 		<section id="footer" class="contact">
 			<div class="container">
-				{% with messages = get_flashed_messages() %}
-				{% if messages %}
-				<ul class="flashes">
-					{% for message in messages %}
-					<li>{{ message }}</li>
-					{% endfor %}
-				</ul>
-				{% endif %}
-				{% endwith %}
-
 				<header>
 					<h2>Questions or comments? <strong>Get in touch:</strong></h2>
 				</header>
@@ -93,4 +86,6 @@
 			</div>
 		</section>
 	</div>
+	
 </body>
+{% endblock %}

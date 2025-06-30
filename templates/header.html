@@ -18,9 +18,17 @@
 							class="site-logo" />
 					</div>
 					<div class="branding-center">
-						<h1 class="site-title">CynoRisk.net</h1>
+						<h1 class="site-title"><a id = "header-title" href = "/">CynoRisk.net</a></h1>
 					</div>
-					<div class="branding-right"></div> <!-- empty, balances the layout -->
+					<div class="branding-right">
+						{% if session.get("user") %}
+						<a href="#">Welcome, {{ session['user'] }}</a>
+						<a href="/logout">Logout</a>
+						{% else %}
+						<a href="/register"><span>Register</span></a>
+						<a href="/login"><span>Sign In</span></a>
+						{% endif %}
+					</div>
 				</div>
 
 				<hr class="logo-divider">
