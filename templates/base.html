@@ -1,0 +1,26 @@
+<!-- templates/base.html -->
+<!DOCTYPE html>
+<html>
+<head>
+	<title>{% block title %}CynoRisk Analytics{% endblock %}</title>
+	<meta charset="utf-8" />
+	<meta name="viewport" content="width=device-width, initial-scale=1, user-scalable=no" />
+	<link rel="icon" type="image/x-icon" href="{{ url_for('static', filename='images/placeholderlogo.jpg') }}">
+	<link rel="stylesheet" href="{{ url_for('static', filename='css/main.css') }}">
+	{% block head %}{% endblock %}
+</head>
+<body class="homepage is-preload">
+	<div id="page-wrapper">
+		{% block content %}{% endblock %}
+	</div>
+
+	<!-- Scripts -->
+	<script src="{{ url_for('static', filename='js/jquery.min.js') }}"></script>
+	<script src="{{ url_for('static', filename='js/jquery.dropotron.min.js') }}"></script>
+	<script src="{{ url_for('static', filename='js/browser.min.js') }}"></script>
+	<script src="{{ url_for('static', filename='js/breakpoints.min.js') }}"></script>
+	<script src="{{ url_for('static', filename='js/util.js') }}"></script>
+	<script src="{{ url_for('static', filename='js/main.js') }}"></script>
+	<script src="{{ url_for('static', filename='js/loadHeader.js') }}"></script>
+</body>
+</html>

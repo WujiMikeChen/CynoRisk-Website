@@ -123,18 +123,126 @@ section {
   position: relative;
 }
 
-
 .branding-left,
 .branding-right {
   flex: 2;
 }
 
+.branding-right {
+  display: flex;
+  flex-direction: column;
+  align-items: flex-end;
+  justify-content: center;
+  gap: 0.25rem;
+  margin-top: 10px;
+}
+
+.auth-link {
+  font-size: 1.2rem;
+  color: #2e5d66; /* Subtle slate-blue tone */
+  text-decoration: none;
+  font-weight: 500;
+  transition: color 0.3s ease, border-bottom 0.3s ease;
+  border-bottom: 1px solid transparent;
+}
+
+.auth-link:hover {
+  color: #ed786a;
+  border-bottom: 1px solid #1c3a40;
+}
+
+.register {
+	max-width: 600px;
+	margin: 2em auto;       /* centers horizontally */
+  	padding: 0 20px;    /* internal left/right padding */
+	text-align: center;
+	align-items: center;
+	margin-bottom: 10em;
+}
+
+.register-button {
+	margin-top: 2em;
+}
 .site-logo {
   width: 200px;  /* increase this value to make the logo bigger */
   height: auto;
 }
 
-.branding-center {
+/* Registration Page Styling */
+
+.form-title {
+  text-align: center;
+  font-size: 2em;
+  margin-top: -2em;
+  letter-spacing: 1px;    
+  margin-bottom: 0em;
+}
+
+.form-wrapper {
+  max-width: 420px;
+  margin: 1em auto 2em auto;  /* top, horizontal, bottom */
+  padding: 1.5em;             
+  background-color: #fff;
+  border: 1px solid #e5e5e5;
+  border-radius: 8px;
+  box-shadow: 0 8px 20px rgba(0, 0, 0, 0.05);
+}
+
+
+form input[type="text"],
+form input[type="email"],
+form input[type="password"] {
+  width: 100%;
+  padding: 0.75em;
+  margin-bottom: 1em;
+  border: 1px solid #ccc;
+  border-radius: 2px;
+  font-size: 1em;
+  background-color: #f8f8f8;
+  transition: border-color 0.3s, background-color 0.3s;
+}
+
+form input:focus {
+  outline: none;
+  background-color: #fff;
+  border-color: #2e5d66;
+}
+
+form button {
+  width: 100%;
+  padding: 0.75em;
+  background-color: #d77c6e; /* Soft coral/pink aligned with brand */
+  border: none;
+  border-radius: 6px;
+  color: #fff;
+  font-weight: 600;
+  font-size: 1em;
+  letter-spacing: 0.5px;
+  cursor: pointer;
+  transition: background-color 0.3s ease;
+}
+
+form button:hover {
+  background-color: #c76556;
+}
+
+.secondary-btn {
+  display: block;
+  text-align: center;
+  margin-top: 15px;
+  color: #c47c6c;
+  font-weight: 500;
+  text-decoration: none;
+}
+
+.form-wrapper > *:last-child {
+  border: none;
+}
+
+#header-title {
+	color:#111
+}
+.branding-center {</a>
   flex: 2;
   text-align: center;
 }
@@ -326,6 +434,27 @@ body.loaded #page-wrapper {
 	font-weight: bold;
 }
 
+.flash-message {
+  position: fixed;
+  top: 20px;
+  right: 20px;
+  background-color: #2e5d66;
+  color: white;
+  padding: 15px 20px;
+  border-radius: 8px;
+  box-shadow: 0 4px 8px rgba(0,0,0,0.2);
+  font-size: 16px;
+  opacity: 0;
+  z-index: 1000;
+  transform: translateY(-20px);
+  transition: opacity 0.5s ease, transform 0.5s ease;
+}
+
+.flash-message.show {
+  opacity: 1;
+  transform: translateY(0);
+}
+
 body {
 	line-height: 1;
 }
@@ -437,7 +566,7 @@ h6 {
 	color: #1D1616;
 	text-shadow: 0.05em 0.05em 0 rgba(0, 0, 0, 0.1);
 	font-size: 1.75em;
-	letter-spacing: 2px;
+	letter-spacing: 1px;
 	text-align: center;
 	margin-bottom:1.0em
 }
@@ -2674,7 +2803,7 @@ background: url("/static/images/banner.jpg");
 	/* Header */
 
 	#header>.container {
-		padding: 12em 0 0.5em 0;
+		padding: 3em 0 0.5em 0;
 	}
 
 	#header h1 {
