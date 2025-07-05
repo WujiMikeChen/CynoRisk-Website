@@ -1,6 +1,7 @@
 <!-- templates/base.html -->
 <!DOCTYPE html>
 <html>
+
 <head>
 	<title>{% block title %}CynoRisk Analytics{% endblock %}</title>
 	<meta charset="utf-8" />
@@ -9,6 +10,7 @@
 	<link rel="stylesheet" href="{{ url_for('static', filename='css/main.css') }}">
 	{% block head %}{% endblock %}
 </head>
+
 <body class="homepage is-preload">
 	<div id="page-wrapper">
 		{% block content %}{% endblock %}
@@ -22,5 +24,8 @@
 	<script src="{{ url_for('static', filename='js/util.js') }}"></script>
 	<script src="{{ url_for('static', filename='js/main.js') }}"></script>
 	<script src="{{ url_for('static', filename='js/loadHeader.js') }}"></script>
+	{% block scripts %}{% endblock %}
+
 </body>
+
 </html>

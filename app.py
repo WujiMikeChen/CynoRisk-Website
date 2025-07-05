@@ -1,10 +1,12 @@
 from flask import Flask, request, render_template, redirect, flash
 import os
 from flask_mail import Mail, Message
-from helper import is_valid_email_format,has_mx_record
+from helper import is_valid_email_format,has_mx_record,allowed_file
 from flask import session
 from werkzeug.security import generate_password_hash, check_password_hash
 from dotenv import load_dotenv
+from werkzeug.utils import secure_filename
+from flask_sqlalchemy import SQLAlchemy
 
 load_dotenv()
 users = {}
@@ -17,9 +19,26 @@ app.config['MAIL_USE_TLS'] = os.getenv("MAIL_USE_TLS", "True") == "True"
 app.config['MAIL_USERNAME'] = os.getenv("MAIL_USERNAME")
 app.config['MAIL_PASSWORD'] = os.getenv("MAIL_PASSWORD")
 app.config['MAIL_DEFAULT_SENDER'] = os.getenv("MAIL_DEFAULT_SENDER")
+basedir = os.path.abspath(os.path.dirname(__file__))
+app.config['SQLALCHEMY_DATABASE_URI'] = 'sqlite:///' + os.path.join(basedir, 'users.db')
+app.config['SQLALCHEMY_TRACK_MODIFICATIONS'] = False
 
+db = SQLAlchemy(app)
 
 mail = Mail(app)
+
+class User(db.Model):
+    id = db.Column(db.Integer, primary_key=True)
+    username = db.Column(db.String(150), unique=True, nullable=False)
+    email = db.Column(db.String(150), unique=True, nullable=False)
+    password_hash = db.Column(db.String(256), nullable=False)
+
+    def set_password(self, password):
+        self.password_hash = generate_password_hash(password)
+
+    def check_password(self, password):
+        return check_password_hash(self.password_hash, password)
+
 
 @app.route("/")
 def home():
@@ -76,6 +95,7 @@ def contact():
     name = request.form.get("name")
     email = request.form.get("email")
     message = request.form.get("message")
+    file = request.files.get('attachment')
 
     print(f"Received message from {name} ({email}): {message}")
 
@@ -98,6 +118,9 @@ def contact():
             recipients=["wujimikechen@gmail.com"],
             body=f"Name: {name}\nEmail: {email}\n\nMessage:\n{message}"
         )
+        if file and file.filename and allowed_file(file.filename):
+            filename = secure_filename(file.filename)
+            msg.attach(filename, file.content_type, file.read())
         mail.send(msg)
         flash("Message sent successfully!")
     except Exception as e:
@@ -106,37 +129,84 @@ def contact():
 
     return redirect("/")
 
+# @app.route("/register", methods=["GET", "POST"])
+# def register():
+#     flash("Test flash")
+#     if request.method == "POST":
+#         username = request.form["username"]
+#         email = request.form["email"]
+#         password = request.form["password"]
+
+#         if username in users:
+#             flash("Username already exists.")
+#             return redirect("/register")
+
+#         users[username] = {
+#             "email": email,
+#             "password": generate_password_hash(password)
+#         }
+#         flash("Registration successful. You can now log in.")
+#         return redirect("/login")
+
+#     return render_template("register.html")
+
 @app.route("/register", methods=["GET", "POST"])
 def register():
-    flash("Test flash")
     if request.method == "POST":
-        username = request.form["username"]
-        email = request.form["email"]
-        password = request.form["password"]
+        username = request.form.get("username")
+        email = request.form.get("email")
+        password = request.form.get("password")
 
-        if username in users:
-            flash("Username already exists.")
+        # Validation
+        if not username or not email or not password:
+            flash("Please fill out all fields.")
             return redirect("/register")
 
-        users[username] = {
-            "email": email,
-            "password": generate_password_hash(password)
-        }
-        flash("Registration successful. You can now log in.")
+        # Duplicate check
+        existing_user = User.query.filter((User.username == username) | (User.email == email)).first()
+        if existing_user:
+            flash("Username or email already exists.")
+            return redirect("/register")
+
+        # Save new user
+        new_user = User(username=username, email=email)
+        new_user.set_password(password)
+        db.session.add(new_user)
+        db.session.commit()
+
+        flash("Registration successful! You can now log in.")
         return redirect("/login")
 
     return render_template("register.html")
 
+
+# @app.route("/login", methods=["GET", "POST"])
+# def login():
+#     if request.method == "POST":
+#         username = request.form["username"]
+#         password = request.form["password"]
+
+#         user = users.get(username)
+#         if user and check_password_hash(user["password"], password):
+#             session["user"] = username
+#             flash("Logged in successfully.")
+#             return redirect("/")
+#         else:
+#             flash("Invalid username or password.")
+#             return redirect("/login")
+
+#     return render_template("login.html")
+
 @app.route("/login", methods=["GET", "POST"])
 def login():
     if request.method == "POST":
-        username = request.form["username"]
-        password = request.form["password"]
+        username = request.form.get("username")
+        password = request.form.get("password")
 
-        user = users.get(username)
-        if user and check_password_hash(user["password"], password):
-            session["user"] = username
-            flash("Logged in successfully.")
+        user = User.query.filter_by(username=username).first()
+        if user and user.check_password(password):
+            flash("Login successful.")
+            session['username'] = user.username  
             return redirect("/")
         else:
             flash("Invalid username or password.")
@@ -144,9 +214,10 @@ def login():
 
     return render_template("login.html")
 
+
 @app.route("/logout")
 def logout():
-    session.pop("user", None)
+    session.clear()
     flash("Logged out successfully.")
     return redirect("/")
 

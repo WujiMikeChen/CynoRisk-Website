@@ -16,13 +16,17 @@
 				<div class="row">
 					<div class="col-6 col-12-medium">
 						<section>
-							<form method="POST" action="/contact">
+							<form method="POST" action="/contact" enctype="multipart/form-data">
 								<div class="row gtr-50">
 									<div class="col-6 col-12-small">
 										<input name="name" placeholder="Name" type="text" />
 									</div>
 									<div class="col-6 col-12-small">
 										<input name="email" placeholder="Email" type="text" />
+									</div>
+									<div class="col-6 col-12-small">
+										<label for="file-upload" class="file-upload-label">Attach a File</label>
+										<input type="file" name="attachment" id="file-upload">
 									</div>
 									<div class="col-12">
 										<textarea name="message" placeholder="Message"></textarea>
@@ -86,6 +90,5 @@
 			</div>
 		</section>
 	</div>
-	
 </body>
 {% endblock %}

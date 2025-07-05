@@ -14,3 +14,10 @@ def has_mx_record(email):
         return len(records) > 0
     except Exception:
         return False
+    
+ALLOWED_EXTENSIONS = {'pdf', 'png', 'jpg', 'jpeg', 'txt', 'csv', 'xlsx', 'xls', 'txt', 'tsv',
+    'json', 'xml', 'log', 'zip', 'gz', 'tar', '7z','py','r','pkl'}
+
+def allowed_file(filename):
+    return '.' in filename and \
+           filename.rsplit('.', 1)[1].lower() in ALLOWED_EXTENSIONS

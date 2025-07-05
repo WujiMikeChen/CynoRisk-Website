@@ -113,6 +113,43 @@ section {
 	display: block;
 }
 
+/*file upload button in contact us*/
+/* .file-upload-wrapper {
+	margin-top: 1em;
+}
+
+.file-upload-label {
+	display: inline-block;
+	padding: 0.5em 1em;
+	background-color: #d77c6e;
+	color: white;
+	font-weight: 600;
+	border-radius: 4px;
+	cursor: pointer;
+	margin-bottom: 0.5em;
+	transition: background-color 0.3s ease;
+}
+
+.file-upload-label:hover {
+	background-color: #c76556;
+}
+
+input[type="file"] {
+	display: none;
+}
+
+.file-name {
+	display: block;
+	margin-top: 0.3em;
+	color: #444;
+	font-size: 0.9em;
+	overflow: hidden;
+	text-overflow: ellipsis;
+	white-space: nowrap;
+	max-width: 100%;
+} */
+
+
 #branding {
   display: flex;
   justify-content: space-between;
