@@ -1,5 +1,9 @@
 .env
-# Ignore database
 users.db
 instance/users.db
 *.sqlite3
+.venv/
+uploads/
+__pycache__/
+*.py[cod]
+*.db

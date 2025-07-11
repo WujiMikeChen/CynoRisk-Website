@@ -151,47 +151,50 @@ input[type="file"] {
 
 
 #branding {
-  display: flex;
-  justify-content: space-between;
-  align-items: center;
-  margin-bottom:0em;
-  margin-bottom: -2em;
-  overflow:hidden;
-  position: relative;
+	display: flex;
+	justify-content: space-between;
+	align-items: center;
+	margin-bottom: 0em;
+	margin-bottom: -2em;
+	overflow: hidden;
+	position: relative;
 }
 
 .branding-left,
 .branding-right {
-  flex: 2;
+	flex: 2;
 }
 
 .branding-right {
-  display: flex;
-  flex-direction: column;
-  align-items: flex-end;
-  justify-content: center;
-  gap: 0.25rem;
-  margin-top: 10px;
+	display: flex;
+	flex-direction: column;
+	align-items: flex-end;
+	justify-content: center;
+	gap: 0.25rem;
+	margin-top: 10px;
 }
 
 .auth-link {
-  font-size: 1.2rem;
-  color: #2e5d66; /* Subtle slate-blue tone */
-  text-decoration: none;
-  font-weight: 500;
-  transition: color 0.3s ease, border-bottom 0.3s ease;
-  border-bottom: 1px solid transparent;
+	font-size: 1.2rem;
+	color: #2e5d66;
+	/* Subtle slate-blue tone */
+	text-decoration: none;
+	font-weight: 500;
+	transition: color 0.3s ease, border-bottom 0.3s ease;
+	border-bottom: 1px solid transparent;
 }
 
 .auth-link:hover {
-  color: #ed786a;
-  border-bottom: 1px solid #1c3a40;
+	color: #ed786a;
+	border-bottom: 1px solid #1c3a40;
 }
 
 .register {
 	max-width: 600px;
-	margin: 2em auto;       /* centers horizontally */
-  	padding: 0 20px;    /* internal left/right padding */
+	margin: 2em auto;
+	/* centers horizontally */
+	padding: 0 20px;
+	/* internal left/right padding */
 	text-align: center;
 	align-items: center;
 	margin-bottom: 10em;
@@ -200,95 +203,100 @@ input[type="file"] {
 .register-button {
 	margin-top: 2em;
 }
+
 .site-logo {
-  width: 200px;  /* increase this value to make the logo bigger */
-  height: auto;
+	width: 200px;
+	/* increase this value to make the logo bigger */
+	height: auto;
 }
 
 /* Registration Page Styling */
 
 .form-title {
-  text-align: center;
-  font-size: 2em;
-  margin-top: -2em;
-  letter-spacing: 1px;    
-  margin-bottom: 0em;
+	text-align: center;
+	font-size: 2em;
+	margin-top: -2em;
+	letter-spacing: 1px;
+	margin-bottom: 0em;
 }
 
 .form-wrapper {
-  max-width: 420px;
-  margin: 1em auto 2em auto;  /* top, horizontal, bottom */
-  padding: 1.5em;             
-  background-color: #fff;
-  border: 1px solid #e5e5e5;
-  border-radius: 8px;
-  box-shadow: 0 8px 20px rgba(0, 0, 0, 0.05);
+	max-width: 420px;
+	margin: 1em auto 2em auto;
+	/* top, horizontal, bottom */
+	padding: 1.5em;
+	background-color: #fff;
+	border: 1px solid #e5e5e5;
+	border-radius: 8px;
+	box-shadow: 0 8px 20px rgba(0, 0, 0, 0.05);
 }
 
 
 form input[type="text"],
 form input[type="email"],
 form input[type="password"] {
-  width: 100%;
-  padding: 0.75em;
-  margin-bottom: 1em;
-  border: 1px solid #ccc;
-  border-radius: 2px;
-  font-size: 1em;
-  background-color: #f8f8f8;
-  transition: border-color 0.3s, background-color 0.3s;
+	width: 100%;
+	padding: 0.75em;
+	margin-bottom: 1em;
+	border: 1px solid #ccc;
+	border-radius: 2px;
+	font-size: 1em;
+	background-color: #f8f8f8;
+	transition: border-color 0.3s, background-color 0.3s;
 }
 
 form input:focus {
-  outline: none;
-  background-color: #fff;
-  border-color: #2e5d66;
+	outline: none;
+	background-color: #fff;
+	border-color: #2e5d66;
 }
 
 form button {
-  width: 100%;
-  padding: 0.75em;
-  background-color: #d77c6e; /* Soft coral/pink aligned with brand */
-  border: none;
-  border-radius: 6px;
-  color: #fff;
-  font-weight: 600;
-  font-size: 1em;
-  letter-spacing: 0.5px;
-  cursor: pointer;
-  transition: background-color 0.3s ease;
+	width: 100%;
+	padding: 0.75em;
+	background-color: #d77c6e;
+	/* Soft coral/pink aligned with brand */
+	border: none;
+	border-radius: 6px;
+	color: #fff;
+	font-weight: 600;
+	font-size: 1em;
+	letter-spacing: 0.5px;
+	cursor: pointer;
+	transition: background-color 0.3s ease;
 }
 
 form button:hover {
-  background-color: #c76556;
+	background-color: #c76556;
 }
 
 .secondary-btn {
-  display: block;
-  text-align: center;
-  margin-top: 15px;
-  color: #c47c6c;
-  font-weight: 500;
-  text-decoration: none;
+	display: block;
+	text-align: center;
+	margin-top: 15px;
+	color: #c47c6c;
+	font-weight: 500;
+	text-decoration: none;
 }
 
-.form-wrapper > *:last-child {
-  border: none;
+.form-wrapper>*:last-child {
+	border: none;
 }
 
 #header-title {
-	color:#111
+	color: #111
 }
-.branding-center {</a>
-  flex: 2;
-  text-align: center;
+
+.branding-center {
+	</a>flex: 2;
+	text-align: center;
 }
 
 .site-title {
-  font-family: 'Arvo', serif;
-  font-weight: 700;
-  font-size: 2.5em;
-  margin: 0;
+	font-family: 'Arvo', serif;
+	font-weight: 700;
+	font-size: 2.5em;
+	margin: 0;
 }
 
 #branding::after {
@@ -442,6 +450,29 @@ body.loaded #page-wrapper {
 	border-radius: 6px;
 }
 
+.sidebar {
+	width: 280px;
+	padding: 20px;
+	border-right: 1px solid #ddd;
+	text-align: left;
+
+}
+
+.sidebar ul {
+	list-style: none;
+	padding: 0;
+	margin: 0;
+}
+
+.sidebar li {
+	margin-bottom: 10px;
+}
+
+.sidebar a {
+	color: #1b1616;
+	text-decoration: none;
+	font-weight: bold;
+}
 
 .article-container {
 	max-width: 1000px;
@@ -472,24 +503,25 @@ body.loaded #page-wrapper {
 }
 
 .flash-message {
-  position: fixed;
-  top: 20px;
-  right: 20px;
-  background-color: #2e5d66;
-  color: white;
-  padding: 15px 20px;
-  border-radius: 8px;
-  box-shadow: 0 4px 8px rgba(0,0,0,0.2);
-  font-size: 16px;
-  opacity: 0;
-  z-index: 1000;
-  transform: translateY(-20px);
-  transition: opacity 0.5s ease, transform 0.5s ease;
+	position: fixed;
+	top: 20px;
+	right: 20px;
+	list-style: none;
+	background-color: #2e5d66;
+	color: white;
+	padding: 15px 20px;
+	border-radius: 8px;
+	box-shadow: 0 4px 8px rgba(0, 0, 0, 0.2);
+	font-size: 16px;
+	opacity: 0;
+	z-index: 1000;
+	transform: translateY(-20px);
+	transition: opacity 0.5s ease, transform 0.5s ease;
 }
 
 .flash-message.show {
-  opacity: 1;
-  transform: translateY(0);
+	opacity: 1;
+	transform: translateY(0);
 }
 
 body {
@@ -594,10 +626,11 @@ h6 {
 }
 
 #article-title {
-	display:block;
+	display: block;
 }
+
 .article-title {
-	display:inline-block;
+	display: inline-block;
 	font-family: 'Font Awesome 5 Free';
 	font-weight: 700;
 	color: #1D1616;
@@ -605,7 +638,7 @@ h6 {
 	font-size: 1.75em;
 	letter-spacing: 1px;
 	text-align: center;
-	margin-bottom:1.0em
+	margin-bottom: 1.0em
 }
 
 h1 a,
@@ -2660,7 +2693,7 @@ header>.no-sidebar .box.post {
 	box-shadow: inset 0px -8px 0px 0px #fff, inset 0px 8px 0px 0px #fff;
 	position: relative;
 	text-transform: uppercase;
-background: url("/static/images/banner.jpg");
+	background: url("/static/images/banner.jpg");
 	background-size: cover;
 	padding: 10em 0;
 }

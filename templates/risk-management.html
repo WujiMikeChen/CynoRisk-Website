@@ -17,129 +17,144 @@
 
 <body class="homepage is-preload">
 	<div id="page-wrapper">
-		<!-- Features -->
+		<!--Title-->
+			<div class="col-12" style="max-width: 100%; text-align: center;">
+				<h2 class="article-title">Risk Management</h2>
+			</div>
+
 		<section id="features">
 			<div class="container">
-				<header id="article-title">
-					<div class="article-title"><span>Risk Management</span></div>
-				</header>
-				<div class="row aln-center">
-					<div class="col-4 col-6-medium col-12-small article">
+				<div class="row">
+					<!-- Sidebar -->
+					<div class="col-2 col-12-small">
+						<aside class="sidebar" style="padding: 20px; border-radius: 0px;">
+							<ul style="list-style: none; padding-left: 0;">
+								<li><a href="{{ url_for('risk_management_html', page='market-risk') }}">Market Risk</a></li>
+								<li><a href="{{ url_for('risk_management_html', page='credit-risk') }}">Credit Risk</a></li>
+								<li><a href="{{ url_for('risk_management_html', page='trading-credit-risk') }}">Trading Credit Risk</a></li>
+								<li><a href="{{ url_for('risk_management_html', page='model-risk') }}">Model Risk</a></li>
+								<li><a href="{{ url_for('risk_management_html', page='liquidity-risk') }}">Liquidity Risk</a></li>
 
-						<!-- Feature -->
-						<section>
-							<a href="/articles/stress-testing" class="image featured"><img
-									src="{{ url_for('static', filename='articles/stress-testing/pic01.jpg') }}" alt="" /></a>
-							<header>
-								<a href="/articles/stress-testing">
-									<h3>Stress Testing and Credit Provisioning for Canadian Banks</h3>
-								</a>
-							</header>
-							<p id="feature-size">Canadian banks turn to stress testing and credit provisioning to guard
-								against rising economic uncertainty, using
-								forward-looking models to manage risk amid inflation, interest rate shifts, and
-								post-pandemic volatility.</p>
-						</section>
-
-					</div>
-					<div class="col-4 col-6-medium col-12-small article">
-
-						<!-- Feature -->
-						<section>
-							<a href="/articles/merton-model" class="image featured"><img
-									src="{{ url_for('static', filename='articles/merton-model/torontopicture.jpg') }}" alt="" /></a>
-							<header>
-								<a href="/articles/merton-model">
-									<h3>Structured Credit Risk Modeling: Merton and Beyond</h3>
-								</a>
-							</header>
-							<p id="feature-size">Exploring structured credit risk modeling from theory to application,
-								this article highlights the Merton model’s evolution and its impact on modern credit
-								risk practices, including stress testing, PD projection, and climate-related financial
-								risk.</p>
-						</section>
-
-					</div>
-					<div class="col-4 col-6-medium col-12-small article">
-
-						<!-- Feature -->
-						<section>
-							<a href="/articles/basel" class="image featured"><img
-									src="{{ url_for('static', filename='articles/basel/thumbnail.jpg') }}" alt="" /></a>
-							<header>
-								<a href="/articles/basel">
-									<h3>US Basel III Final Reforms: Reinventing Capital Requirements for Banks</h3>
-								</a>
-							</header>
-							<p id="feature-size">U.S. regulators unveil sweeping Basel III Endgame reforms, raising
-								capital requirements and
-								aligning rules across major banks to boost financial system resilience and transparency.
-							</p>
-						</section>
+							</ul>
+						</aside>
 					</div>
 
-					<!-- Hidden Articles -->
-					<div class="col-4 col-6-medium col-12-small hidden article">
+					<!-- Main content -->
+					<div class="col-8 col-12-small" style="margin-left: auto; margin-right: auto;">
+						<div class="row aln-center">
+							<div class="col-6 col-6-medium col-12-small article">
 
-						<!-- Feature -->
-						<section>
-							<a href="/articles/stress-testing" class="image featured"><img
-									src="{{ url_for('static', filename='articles/stress-testing/pic01.jpg') }}" alt="" /></a>
-							<header>
-								<a href="/articles/stress-testing">
-									<h3>Stress Testing and Credit Provisioning for Canadian Banks</h3>
-								</a>
-							</header>
-							<p id="feature-size">Canadian banks turn to stress testing and credit provisioning to guard
-								against rising economic uncertainty, using
-								forward-looking models to manage risk amid inflation, interest rate shifts, and
-								post-pandemic volatility.</p>
-						</section>
+								<section>
+									<a href="/articles/stress-testing" class="image featured"><img
+											src="{{ url_for('static', filename='articles/stress-testing/pic01.jpg') }}"
+											alt="" /></a>
+									<header>
+										<a href="/articles/stress-testing">
+											<h3>Stress Testing and Credit Provisioning for Canadian Banks</h3>
+										</a>
+									</header>
+									<p id="feature-size">Canadian banks turn to stress testing and credit provisioning
+										to guard
+										against rising economic uncertainty, using
+										forward-looking models to manage risk amid inflation, interest rate shifts, and
+										post-pandemic volatility.</p>
+								</section>
 
+							</div>
+							<div class="col-6 col-6-medium col-12-small article">
+
+								<section>
+									<a href="/articles/merton-model" class="image featured"><img
+											src="{{ url_for('static', filename='articles/merton-model/torontopicture.jpg') }}"
+											alt="" /></a>
+									<header>
+										<a href="/articles/merton-model">
+											<h3>Structured Credit Risk Modeling: Merton and Beyond</h3>
+										</a>
+									</header>
+									<p id="feature-size">Exploring structured credit risk modeling from theory to
+										application,
+										this article highlights the Merton model’s evolution and its impact on modern
+										credit
+										risk practices, including stress testing, PD projection, and climate-related
+										financial
+										risk.</p>
+								</section>
+
+							</div>
+
+							<div class="col-4 col-6-medium col-12-small hidden article">
+
+								<section>
+									<a href="/articles/stress-testing" class="image featured"><img
+											src="{{ url_for('static', filename='articles/stress-testing/pic01.jpg') }}"
+											alt="" /></a>
+									<header>
+										<a href="/articles/stress-testing">
+											<h3>Stress Testing and Credit Provisioning for Canadian Banks</h3>
+										</a>
+									</header>
+									<p id="feature-size">Canadian banks turn to stress testing and credit provisioning
+										to guard
+										against rising economic uncertainty, using
+										forward-looking models to manage risk amid inflation, interest rate shifts, and
+										post-pandemic volatility.</p>
+								</section>
+
+							</div>
+							<div class="col-4 col-6-medium col-12-small hidden article">
+
+								<section>
+									<a href="/articles/merton-model" class="image featured"><img
+											src="{{ url_for('static', filename='articles/merton-model/torontopicture.jpg') }}"
+											alt="" /></a>
+									<header>
+										<a href="/articles/merton-model">
+											<h3>Structured Credit Risk Modeling: Merton and Beyond</h3>
+										</a>
+									</header>
+									<p id="feature-size">Exploring structured credit risk modeling from theory to
+										application,
+										this article highlights the Merton model’s evolution and its impact on modern
+										credit
+										risk practices, including stress testing, PD projection, and climate-related
+										financial
+										risk.</p>
+								</section>
+
+							</div>
+							<div class="col-4 col-6-medium col-12-small hidden article">
+
+								<section>
+									<a href="/articles/basel" class="image featured"><img
+											src="{{ url_for('static', filename='articles/basel/thumbnail.jpg') }}"
+											alt="" /></a>
+									<header>
+										<a href="/articles/basel">
+											<h3>US Basel III Final Reforms: Reinventing Capital Requirements for Banks
+											</h3>
+										</a>
+									</header>
+									<p id="feature-size">U.S. regulators unveil sweeping Basel III Endgame reforms,
+										raising
+										capital requirements and
+										aligning rules across major banks to boost financial system resilience and
+										transparency.
+									</p>
+								</section>
+							</div>
+						</div>
 					</div>
-					<div class="col-4 col-6-medium col-12-small hidden article">
 
-						<!-- Feature -->
-						<section>
-							<a href="/articles/merton-model" class="image featured"><img
-									src="{{ url_for('static', filename='articles/merton-model/torontopicture.jpg') }}" alt="" /></a>
-							<header>
-								<a href="/articles/merton-model">
-									<h3>Structured Credit Risk Modeling: Merton and Beyond</h3>
-								</a>
-							</header>
-							<p id="feature-size">Exploring structured credit risk modeling from theory to application,
-								this article highlights the Merton model’s evolution and its impact on modern credit
-								risk practices, including stress testing, PD projection, and climate-related financial
-								risk.</p>
-						</section>
-
+					<div class="col-12">
+						<ul class="actions" style="text-align: center;">
+							<li><a href="javascript:void(0);" id="show-more" class="button icon solid fa-file">Show
+									More</a></li>
+						</ul>
 					</div>
-					<div class="col-4 col-6-medium col-12-small hidden article">
-
-						<!-- Feature -->
-						<section>
-							<a href="/articles/basel" class="image featured"><img
-									src="{{ url_for('static', filename='articles/basel/thumbnail.jpg') }}" alt="" /></a>
-							<header>
-								<a href="/articles/basel">
-									<h3>US Basel III Final Reforms: Reinventing Capital Requirements for Banks</h3>
-								</a>
-							</header>
-							<p id="feature-size">U.S. regulators unveil sweeping Basel III Endgame reforms, raising
-								capital requirements and
-								aligning rules across major banks to boost financial system resilience and transparency.
-							</p>
-						</section>
-					</div>
-				</div>
-				<div class="col-12">
-					<ul class="actions">
-						<li><a href="javascript:void(0);" id="show-more" class="button icon solid fa-file">Show More</a>
-						</li>
-					</ul>
 				</div>
 			</div>
+		</dive>
 	</div>
 	</section>
 

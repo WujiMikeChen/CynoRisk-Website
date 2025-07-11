@@ -18,7 +18,7 @@
 							class="site-logo" />
 					</div>
 					<div class="branding-center">
-						<h1 class="site-title"><a id = "header-title" href = "/">CynoRisk.net</a></h1>
+						<h1 class="site-title"><a id="header-title" href="/">CynoRisk.net</a></h1>
 					</div>
 					<div class="branding-right">
 						{% if session.get("username") %}
@@ -35,15 +35,165 @@
 				<!-- Nav -->
 				<nav id="nav">
 					<ul>
-						<li><a href="/"><span>Home</span></a></li>
-						<li><a href="/risk-management"><span>Risk Management</span></a></li>
-						<li><a href="/regulation"><span>Regulation</span></a></li>
-						<li><a href="/pricing"><span>Pricing</span></a></li>
-						<li><a href="/portfolio-management"><span>Portfolio Management</span></a></li>
-						<li><a href="/journal"><span>Journals</span></a></li>
-						<!-- <li><a class="icon solid fa-handshake" href="/"><span>How we help</span></a></li>
+						<li><a href="{{ url_for('render_html', page='index') }}"><span>Home</span></a></li>
+						<!-- <li><a href="{{ url_for('render_html', page='risk-management') }}"><span>Risk Management</span></a></li> -->
 						<li>
-							<a href="#" class="icon fa-chart-bar"><span>Products</span></a>
+							<a href="{{ url_for('render_html', page='risk-management') }}"><span>Risk
+									Management</span></a>
+							<ul>
+								<li><a href="{{ url_for('risk_management_html', page='market-risk') }}">Market Risk</a>
+									<ul>
+										<li><a href="{{ url_for('risk_management_html', page='risk-sensitivities') }}">Risk
+												Sensitivities</a></li>
+										<li><a href="{{ url_for('risk_management_html', page='vares') }}">VaR and ES</a>
+										</li>
+										<li><a href="{{ url_for('risk_management_html', page='stress-testing') }}">Stress
+												Testing</a></li>
+									</ul>
+								</li>
+								<li><a href="{{ url_for('risk_management_html', page='credit-risk') }}">Credit Risk</a>
+									<ul>
+										<li><a href="{{ url_for('risk_management_html', page='credit-spread-risk') }}">Credit
+												Spread Risk</a></li>
+										<li><a href="{{ url_for('risk_management_html', page='default-settlement') }}">Default
+												and Settlement Risk</a>
+										</li>
+										<li><a href="{{ url_for('risk_management_html', page='liquidity-risk-credit') }}">Liquidity Risk</a>
+										</li>
+									</ul>
+								</li>
+								<li><a href="{{ url_for('risk_management_html', page='trading-credit-risk') }}">Trading
+										Credit Risk</a>
+									<ul>
+										<li><a
+												href="{{ url_for('risk_management_html', page='counterparty-credit-risk') }}">Counterparty
+												Credit Risk</a></li>
+										<li><a
+												href="{{ url_for('risk_management_html', page='potential-future-exposure') }}">Potential
+												Future Exposure</a>
+										</li>
+										<li><a
+												href="{{ url_for('risk_management_html', page='collateral-management') }}">Collateral
+												Management</a></li>
+										<li><a href="{{ url_for('risk_management_html', page='central-clearing') }}">Central
+												Clearing</a></li>
+									</ul>
+								</li>
+								<li><a href="{{ url_for('risk_management_html', page='model-risk') }}">Model Risk</a>
+									<ul>
+										<li><a href="{{ url_for('risk_management_html', page='model-validation') }}">Model
+												Validation</a></li>
+										<li><a
+												href="{{ url_for('risk_management_html', page='model-risk-management') }}">Model
+												Risk Management</a>
+										</li>
+										<li><a href="{{ url_for('risk_management_html', page='model-life-cycle') }}">Model
+												Life Cycle Management</a></li>
+									</ul>
+								</li>
+								<li><a href="{{ url_for('risk_management_html', page='liquidity-risk') }}">Liquidity
+										Risk</a></li>
+							</ul>
+						</li>
+
+
+						<li><a href="{{ url_for('render_html', page='regulation') }}"><span>Regulation</span></a>
+							<ul>
+								<li><a href="{{ url_for('regulation_html', page='market-risk-capital') }}">Market Risk
+										Capital</a>
+									<ul>
+										<li><a href="{{ url_for('regulation_html', page='basel2') }}">Basel II</a></li>
+										<li><a href="{{ url_for('regulation_html', page='basel3') }}">Basel III</a></li>
+										<li><a href="{{ url_for('regulation_html', page='basel4') }}">Basel IV</a></li>
+								</li>
+							</ul>
+						</li>
+						<li><a href="{{ url_for('regulation_html', page='credit-risk-regulation') }}">Credit Risk</a>
+							<ul>
+								<li><a href="{{ url_for('regulation_html', page='standard-approach') }}">Standardized
+										Approach</a></li>
+								<li><a href="{{ url_for('regulation_html', page='internal-approach') }}">Internal
+										Rating-Based Approach</a></li>
+							</ul>
+						</li>
+						<li><a href="{{ url_for('regulation_html', page='settlement-counterparty') }}">Settlement and
+								Counterparty Risk</a>
+							<ul>
+								<li><a href="{{ url_for('regulation_html', page='basel2-settlement') }}">Basel II</a>
+								</li>
+								<li><a href="{{ url_for('regulation_html', page='saccr') }}">SA-CCR</a></li>
+								<li><a href="{{ url_for('regulation_html', page='immccr') }}">IMM-CCR</a></li>
+							</ul>
+						</li>
+						<li><a href="{{ url_for('regulation_html', page='cva') }}">Credit Valuation Adjustment (CVA)
+								Risk</a>
+							<ul>
+								<li><a href="{{ url_for('regulation_html', page='sacva') }}">SA-CVA</a></li>
+								<li><a href="{{ url_for('regulation_html', page='immcva') }}">IMM-CVA</a></li>
+								<li><a href="{{ url_for('regulation_html', page='bacva') }}">BA-CVA</a></li>
+							</ul>
+						</li>
+						<li><a href="{{ url_for('regulation_html', page='simm') }}">SIMM</a></li>
+						<li><a href="{{ url_for('regulation_html', page='ccar') }}">CCAR</a></li>
+						<li><a href="{{ url_for('regulation_html', page='ifrs9') }}">IFRS 9</a></li>
+					</ul>
+					</li>
+
+					<li><a href="{{ url_for('render_html', page='pricing') }}"><span>Pricing</span></a>
+						<ul>
+							<li><a href="{{ url_for('pricing_html', page='fixed-income') }}">Fixed Income</a>
+							<ul>
+								<li><a href="{{ url_for('pricing_html', page='product') }}">Product</a>
+								<li><a href="{{ url_for('pricing_html', page='trading-market') }}">Trading and Market</a></li>
+								<li><a href="{{ url_for('pricing_html', page='market-data') }}">Market Data</a></li>
+								<li><a href="{{ url_for('pricing_html', page='valuation-model') }}">Valuation Model</a></li>
+							</ul>
+							</li>
+							<li><a href="{{ url_for('pricing_html', page='fx') }}">FX</a>
+							<ul>
+								<li><a href="{{ url_for('pricing_html', page='product-fx') }}">Product</a>
+								<li><a href="{{ url_for('pricing_html', page='trading-market-fx') }}">Trading and Market</a></li>
+								<li><a href="{{ url_for('pricing_html', page='market-data-fx') }}">Market Data</a></li>
+								<li><a href="{{ url_for('pricing_html', page='valuation-model-fx') }}">Valuation Model</a></li>
+								</li>
+							</ul>
+							</li>
+							<li><a href="{{ url_for('pricing_html', page='equity') }}">Equity</a>
+							<ul>
+								<li><a href="{{ url_for('pricing_html', page='product-equity') }}">Product</a>
+								<li><a href="{{ url_for('pricing_html', page='trading-market-equity') }}">Trading and Market</a></li>
+								<li><a href="{{ url_for('pricing_html', page='market-data-equity') }}">Market Data</a></li>
+								<li><a href="{{ url_for('pricing_html', page='valuation-model-equity') }}">Valuation Model</a></li>
+								</li>
+							</ul>
+							</li>
+							<li><a href="{{ url_for('pricing_html', page='credit') }}">Credit</a>
+								<ul>
+								<li><a href="{{ url_for('pricing_html', page='product-credit') }}">Product</a>
+								<li><a href="{{ url_for('pricing_html', page='trading-market-credit') }}">Trading and Market</a></li>
+								<li><a href="{{ url_for('pricing_html', page='market-data-credit') }}">Market Data</a></li>
+								<li><a href="{{ url_for('pricing_html', page='valuation-model-credit') }}">Valuation Model</a></li>
+								</li>
+								</ul>
+							</li>
+							<li><a href="{{ url_for('pricing_html', page='commodity') }}">Commodity</a>
+								<ul>
+								<li><a href="{{ url_for('pricing_html', page='product-comm') }}">Product</a>
+								<li><a href="{{ url_for('pricing_html', page='trading-market-comm') }}">Trading and Market</a></li>
+								<li><a href="{{ url_for('pricing_html', page='market-data-comm') }}">Market Data</a></li>
+								<li><a href="{{ url_for('pricing_html', page='valuation-model-comm') }}">Valuation Model</a></li>
+								</li>
+								</ul>
+							</li>
+
+						</ul>
+					</li>
+					<li><a href="{{ url_for('render_html', page='portfolio-management') }}"><span>Portfolio
+								Management</span></a></li>
+					<li><a href="{{ url_for('render_html', page='ai') }}"><span>AI</span></a></li>
+					<li><a href="{{ url_for('render_html', page='journal') }}"><span>Journals</span></a></li>
+					<!-- <li>
+							<a href="#"><span>Products</span></a>
 							<ul>
 								<li><a href="/articles/article-stress-testing/stress-testing.html">Stress Testing Article</a></li>
 								<li><a href="/">Home</a></li>
@@ -59,8 +209,8 @@
 								<li><a href="#">Veroeros feugiat</a></li>
 							</ul>
 						</li> -->
-						<li><a href="/about-us"><span>About</span></a></li>
-						<li><a href="#footer"><span>Contact</span></a></li>
+					<li><a href="{{ url_for('render_html', page='about-us') }}"><span>About</span></a></li>
+					<li><a href="#footer"><span>Contact</span></a></li>
 					</ul>
 				</nav>
 

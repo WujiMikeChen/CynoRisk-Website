@@ -7,6 +7,7 @@ from werkzeug.security import generate_password_hash, check_password_hash
 from dotenv import load_dotenv
 from werkzeug.utils import secure_filename
 from flask_sqlalchemy import SQLAlchemy
+import pandas as pd
 
 load_dotenv()
 users = {}
@@ -22,6 +23,9 @@ app.config['MAIL_DEFAULT_SENDER'] = os.getenv("MAIL_DEFAULT_SENDER")
 basedir = os.path.abspath(os.path.dirname(__file__))
 app.config['SQLALCHEMY_DATABASE_URI'] = 'sqlite:///' + os.path.join(basedir, 'users.db')
 app.config['SQLALCHEMY_TRACK_MODIFICATIONS'] = False
+UPLOAD_FOLDER = 'uploads'
+ALLOWED_EXTENSIONS = {'csv', 'xlsx', 'txt', 'json'}
+app.config['UPLOAD_FOLDER'] = UPLOAD_FOLDER
 
 db = SQLAlchemy(app)
 
@@ -44,34 +48,6 @@ class User(db.Model):
 def home():
     return render_template("index.html")
 
-@app.route("/contact-us")
-def contact_us_page():
-    return render_template("contact-us.html")
-
-@app.route("/about-us")
-def about_us_page():
-    return render_template("about-us.html")
-
-@app.route("/risk-management")
-def risk_management_page():
-    return render_template("risk-management.html")
-
-@app.route("/regulation")
-def regulation_page():
-    return render_template("regulation.html")
-
-@app.route("/pricing")
-def pricing_page():
-    return render_template("pricing.html")
-
-@app.route("/portfolio-management")
-def portfolio_management_page():
-    return render_template("portfolio-management.html")
-
-@app.route("/journal")
-def journal_page():
-    return render_template("journal.html")
-
 @app.route("/header.html")
 def header_partial():
     return render_template("header.html")
@@ -79,6 +55,22 @@ def header_partial():
 @app.route("/contact-us.html")
 def contact_partial():
     return render_template("contact-us.html")
+
+@app.route('/<page>')
+def render_html(page):
+    return render_template(f'{page}.html')
+
+@app.route('/risk-management/<page>')
+def risk_management_html(page):
+    return render_template(f'risk-management/{page}.html')
+
+@app.route('/regulation/<page>')
+def regulation_html(page):
+    return render_template(f'regulation/{page}.html')
+
+@app.route('/pricing/<page>')
+def pricing_html(page):
+    return render_template(f'pricing/{page}.html')
 
 @app.route("/articles/<article_name>")
 def render_article(article_name):
@@ -129,27 +121,6 @@ def contact():
 
     return redirect("/")
 
-# @app.route("/register", methods=["GET", "POST"])
-# def register():
-#     flash("Test flash")
-#     if request.method == "POST":
-#         username = request.form["username"]
-#         email = request.form["email"]
-#         password = request.form["password"]
-
-#         if username in users:
-#             flash("Username already exists.")
-#             return redirect("/register")
-
-#         users[username] = {
-#             "email": email,
-#             "password": generate_password_hash(password)
-#         }
-#         flash("Registration successful. You can now log in.")
-#         return redirect("/login")
-
-#     return render_template("register.html")
-
 @app.route("/register", methods=["GET", "POST"])
 def register():
     if request.method == "POST":
@@ -179,24 +150,6 @@ def register():
 
     return render_template("register.html")
 
-
-# @app.route("/login", methods=["GET", "POST"])
-# def login():
-#     if request.method == "POST":
-#         username = request.form["username"]
-#         password = request.form["password"]
-
-#         user = users.get(username)
-#         if user and check_password_hash(user["password"], password):
-#             session["user"] = username
-#             flash("Logged in successfully.")
-#             return redirect("/")
-#         else:
-#             flash("Invalid username or password.")
-#             return redirect("/login")
-
-#     return render_template("login.html")
-
 @app.route("/login", methods=["GET", "POST"])
 def login():
     if request.method == "POST":
@@ -214,6 +167,39 @@ def login():
 
     return render_template("login.html")
 
+def allowed_file(filename):
+    return '.' in filename and \
+           filename.rsplit('.', 1)[1].lower() in ALLOWED_EXTENSIONS
+
+@app.route("/upload", methods=["GET", "POST"])
+def upload():
+    if request.method == "POST":
+        file = request.files.get("file")
+        if not file or not allowed_file(file.filename):
+            flash("Invalid file type.")
+            return redirect(request.url)
+        
+        if 'username' not in session:
+            flash("You must be logged in to upload files.")
+            return redirect("/login")
+
+        user_folder = os.path.join(app.config['UPLOAD_FOLDER'], session['username'])
+        os.makedirs(user_folder, exist_ok=True)  # Create folder if it doesn't exist
+
+        filename = secure_filename(file.filename)
+        file_path = os.path.join(user_folder, filename)
+        file.save(file_path)
+
+        try:
+            df = pd.read_csv(file_path)  
+            result = df.describe().to_html(classes="table table-striped")
+        except Exception as e:
+            flash(f"Error processing file: {e}")
+            return redirect(request.url)
+
+        return render_template("result.html", result=result)
+
+    return render_template("upload.html")
 
 @app.route("/logout")
 def logout():

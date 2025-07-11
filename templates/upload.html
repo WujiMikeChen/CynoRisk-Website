@@ -1,0 +1,15 @@
+{% extends "layout.html" %}
+
+{% block title %}Upload{% endblock %}
+
+{% block content %}
+<div id="page-wrapper">
+    <div class="register">
+        <form action="/upload" method="POST" enctype="multipart/form-data">
+            <label for="file">Upload your file:</label><br>
+            <input type="file" name="file" accept=".csv,.xlsx,.txt,.json" required>
+            <button type="submit">Upload & Process</button>
+        </form>
+    </div>
+</div>
+{% endblock %}
