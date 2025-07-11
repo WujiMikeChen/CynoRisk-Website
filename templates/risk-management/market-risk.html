@@ -18,9 +18,9 @@
 <body class="homepage is-preload">
 	<div id="page-wrapper">
 		<!--Title-->
-			<div class="col-12" style="max-width: 100%; text-align: center;">
-				<h2 class="article-title">Market Risk</h2>
-			</div>
+		<div class="col-12" style="max-width: 100%; text-align: center;">
+			<h2 class="article-title">Market Risk</h2>
+		</div>
 
 		<section id="features">
 			<div class="container">
@@ -29,57 +29,46 @@
 					<div class="col-2 col-12-small">
 						<aside class="sidebar" style="padding: 20px; border-radius: 0px;">
 							<ul style="list-style: none; padding-left: 0;">
-								<li><a href="{{ url_for('risk_management_html', page='risk-sensitivities') }}">Risk Sensitivities</a></li>
+								<li><a href="{{ url_for('risk_management_html', page='risk-sensitivities') }}">Risk
+										Sensitivities</a></li>
 								<li><a href="{{ url_for('risk_management_html', page='vares') }}">VaR and ES</a></li>
-								<li><a href="{{ url_for('risk_management_html', page='stress-testing') }}">Stress Testing</a></li>
+								<li><a href="{{ url_for('risk_management_html', page='stress-testing') }}">Stress
+										Testing</a></li>
 							</ul>
 						</aside>
 					</div>
 
 					<!-- Main content -->
-					<div class="col-8 col-12-small" style="margin-left: auto; margin-right: auto;">
+					<div class="col-8 col-12-small" style="margin-left: auto; margin-right: auto; text-align: left;">
+						<h1>
+							<strong>What is Lorem Ipsum?</strong>
+						</h1>
+						<p style="text-align: left;">
+							Lorem Ipsum is simply dummy text of the printing and typesetting industry. Lorem Ipsum has
+							been the industry's standard dummy text ever since the 1500s, when an unknown printer took a
+							galley of type and scrambled it to make a type specimen book. It has survived not only five
+							centuries, but also the leap into electronic typesetting, remaining essentially unchanged.
+							It was popularised in the 1960s with the release of Letraset sheets containing Lorem Ipsum
+							passages, and more recently with desktop publishing software like Aldus PageMaker including
+							versions of Lorem Ipsum.
+						</p>
+						<h1>
+							<strong>Where does it come from?</strong>
+						</h1>
+						<p style="text-align: left;">
+							Contrary to popular belief, Lorem Ipsum is not simply random text. It has roots in a piece
+							of classical Latin literature from 45 BC, making it over 2000 years old. Richard McClintock,
+							a Latin professor at Hampden-Sydney College in Virginia, looked up one of the more obscure
+							Latin words, consectetur, from a Lorem Ipsum passage, and going through the cites of the
+							word in classical literature, discovered the undoubtable source. Lorem Ipsum comes from
+							sections 1.10.32 and 1.10.33 of "de Finibus Bonorum et Malorum" (The Extremes of Good and
+							Evil) by Cicero, written in 45 BC. This book is a treatise on the theory of ethics, very
+							popular during the Renaissance. The first line of Lorem Ipsum, "Lorem ipsum dolor sit
+							amet..", comes from a line in section 1.10.32.
+						</p>
+					</div>
+					<div class="col-12 col-12-small" style="margin-left: auto; margin-right: auto;">
 						<div class="row aln-center">
-							<div class="col-6 col-6-medium col-12-small article">
-
-								<section>
-									<a href="/articles/stress-testing" class="image featured"><img
-											src="{{ url_for('static', filename='articles/stress-testing/pic01.jpg') }}"
-											alt="" /></a>
-									<header>
-										<a href="/articles/stress-testing">
-											<h3>Stress Testing and Credit Provisioning for Canadian Banks</h3>
-										</a>
-									</header>
-									<p id="feature-size">Canadian banks turn to stress testing and credit provisioning
-										to guard
-										against rising economic uncertainty, using
-										forward-looking models to manage risk amid inflation, interest rate shifts, and
-										post-pandemic volatility.</p>
-								</section>
-
-							</div>
-							<div class="col-6 col-6-medium col-12-small article">
-
-								<section>
-									<a href="/articles/merton-model" class="image featured"><img
-											src="{{ url_for('static', filename='articles/merton-model/torontopicture.jpg') }}"
-											alt="" /></a>
-									<header>
-										<a href="/articles/merton-model">
-											<h3>Structured Credit Risk Modeling: Merton and Beyond</h3>
-										</a>
-									</header>
-									<p id="feature-size">Exploring structured credit risk modeling from theory to
-										application,
-										this article highlights the Merton model’s evolution and its impact on modern
-										credit
-										risk practices, including stress testing, PD projection, and climate-related
-										financial
-										risk.</p>
-								</section>
-
-							</div>
-
 							<div class="col-4 col-6-medium col-12-small hidden article">
 
 								<section>
@@ -151,7 +140,7 @@
 					</div>
 				</div>
 			</div>
-		</dive>
+			</dive>
 	</div>
 	</section>
 
